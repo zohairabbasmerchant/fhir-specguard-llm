@@ -10,7 +10,7 @@ import json
 import unittest
 
 from specguard_xslt_auditor import (
-     SAMPLE_FORUM_SENTRY_XSLT,
+     SAMPLE_GATEWAY_XSLT,
     ApiComplexityInput,
     ComplexityEstimationMatrix,
     ComplexityLevel,
@@ -102,7 +102,7 @@ class TestXsltAstAndGovernancePipeline(unittest.TestCase):
 
     def test_ast_extracts_arrays_dates_and_lob_enums(self) -> None:
         extractor = XsltAstContractExtractor()
-        ast = extractor.parse_stylesheet(SAMPLE_FORUM_SENTRY_XSLT)
+        ast = extractor.parse_stylesheet(SAMPLE_GATEWAY_XSLT)
 
         self.assertIn("payloadArea.grpBenefitInfo", ast.array_containers)
         self.assertIn("headerArea.systemMessage", ast.array_containers)
@@ -127,7 +127,7 @@ class TestXsltAstAndGovernancePipeline(unittest.TestCase):
             "payloadArea.grpBenefitInfo.bpidInfo.lob.code": "LOB code",
         }
         contract = self.engine.synthesize_and_verify(
-            response_xslt=SAMPLE_FORUM_SENTRY_XSLT,
+            response_xslt=SAMPLE_GATEWAY_XSLT,
             data_mapping_sheet=dm_sheet,
             error_taxonomy_sheet={"ERR_400": "Invalid Request"},
             gateway_policy=self.policy,
@@ -152,7 +152,7 @@ class TestXsltAstAndGovernancePipeline(unittest.TestCase):
         )
         with self.assertRaises(ConformanceFailureError):
             self.engine.synthesize_and_verify(
-                response_xslt=SAMPLE_FORUM_SENTRY_XSLT,
+                response_xslt=SAMPLE_GATEWAY_XSLT,
                 data_mapping_sheet={},
                 error_taxonomy_sheet={"ERR": "Error"},
                 gateway_policy=bad_policy,

@@ -29,7 +29,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 from specguard_xslt_auditor import (
-    SAMPLE_FORUM_SENTRY_XSLT,
+    SAMPLE_GATEWAY_XSLT,
     GatewayPolicyDefinition,
     SpecGuardGovernanceEngine,
 )
@@ -342,7 +342,7 @@ SAMPLE_9TAB_WORKBOOK: Dict[str, Any] = {
     "API Diagram": {
         "caller": "External EHR / Member Portal",
         "idp": "Okta OAuth 2.0 / OIDC",
-        "gateway": "Forum Sentry XML/JSON Engine",
+        "gateway": "XSLT-based API Gateway XML/JSON Engine",
         "backend": "Core Benefit System via IBM MQ",
     },
     "Process Flow": {
@@ -438,7 +438,7 @@ class TestWorkbookAndDriftCli(unittest.TestCase):
             required_smart_scopes=["user/Coverage.read"],
         )
         baseline = self.engine.synthesize_and_verify(
-            response_xslt=SAMPLE_FORUM_SENTRY_XSLT,
+            response_xslt=SAMPLE_GATEWAY_XSLT,
             data_mapping_sheet=parsed.data_mapping,
             error_taxonomy_sheet={"ERR_INVALID_GROUP": "Invalid Group"},
             gateway_policy=policy,

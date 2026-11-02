@@ -8,7 +8,7 @@ Author: Zohair Abbas Merchant, M.S. (ORCID: https://orcid.org/0009-0003-9013-440
 Repository: https://github.com/zohairabbasmerchant/fhir-specguard-llm
 License: Apache License 2.0
 
-Validates that Forum Sentry XSLT AST target mappings and synthesized OpenAPI 3.1
+Validates that XSLT-based API Gateway XSLT AST target mappings and synthesized OpenAPI 3.1
 contracts satisfy the three statutory HL7 FHIR R4 Implementation Guides mandated
 by the CMS Interoperability and Prior Authorization Final Rule (CMS-0057-F):
   1. Patient Access API — CARIN IG for Blue Button (v2.0.0):

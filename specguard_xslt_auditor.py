@@ -196,7 +196,7 @@ class XsltAstSummary:
 class XsltAstContractExtractor:
     """
     Static Abstract Syntax Tree (AST) visitor for W3C XSLT 1.0/2.0/3.0
-    stylesheets deployed on Forum Sentry API Gateways.
+    stylesheets deployed on XSLT-based API Gateway API Gateways.
 
     Extracts:
       1. <xsl:variable> symbol bindings
@@ -546,7 +546,7 @@ class ConformanceFailureError(Exception):
 
 @dataclass
 class GatewayPolicyDefinition:
-    """Forum Sentry Virtual Directory & Okta OAuth 2.0 policy metadata."""
+    """XSLT-based API Gateway Virtual Directory & Okta OAuth 2.0 policy metadata."""
     policy_name: str
     endpoint_path: str
     http_method: str
@@ -654,13 +654,13 @@ class SpecGuardGovernanceEngine:
                 "title": f"Enterprise Healthcare Gateway Policy: {gateway_policy.policy_name}",
                 "version": "1.0.0",
                 "description": (
-                    f"Auto-synthesized and verified by SpecGuard-LLM from Forum Sentry "
+                    f"Auto-synthesized and verified by SpecGuard-LLM from XSLT-based API Gateway "
                     f"task lists ({gateway_policy.request_task_list} / "
                     f"{gateway_policy.response_task_list}) and remote policy "
                     f"{gateway_policy.remote_policy}."
                 ),
             },
-            "x-forum-sentry-governance": {
+            "x-xslt-gateway-governance": {
                 "policyName": gateway_policy.policy_name,
                 "requestTaskList": gateway_policy.request_task_list,
                 "responseTaskList": gateway_policy.response_task_list,
@@ -671,7 +671,7 @@ class SpecGuardGovernanceEngine:
                 "securitySchemes": {
                     "OktaOAuth2Bearer": {
                         "type": "oauth2",
-                        "description": "Okta OAuth 2.0 / OIDC JWT (RFC 7519) validated at Forum Sentry edge",
+                        "description": "Okta OAuth 2.0 / OIDC JWT (RFC 7519) validated at XSLT-based API Gateway edge",
                         "flows": {
                             "clientCredentials": {
                                 "tokenUrl": f"{gateway_policy.okta_issuer_url}/v1/token",
@@ -740,7 +740,7 @@ class SpecGuardGovernanceEngine:
 # SANITIZED PRODUCTION FIXTURE & UNIT TEST SUITE
 # ============================================================================
 
-SAMPLE_FORUM_SENTRY_XSLT = """
+SAMPLE_GATEWAY_XSLT = """
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:variable name="groupNum" select="GroupInfoDetails/Group/GroupNum"/>
   <xsl:variable name="groupName" select="GroupInfoDetails/Group/GroupName"/>
@@ -835,7 +835,7 @@ class TestSpecGuardToolkit(unittest.TestCase):
 
     def test_xslt_ast_extraction_and_schema_synthesis(self) -> None:
         extractor = XsltAstContractExtractor()
-        summary = extractor.parse_stylesheet(SAMPLE_FORUM_SENTRY_XSLT)
+        summary = extractor.parse_stylesheet(SAMPLE_GATEWAY_XSLT)
 
         # Verify variable symbol table resolution
         self.assertEqual(
@@ -877,7 +877,7 @@ class TestSpecGuardToolkit(unittest.TestCase):
         }
         with self.assertRaises(SpecificationDivergenceError):
             engine.synthesize_and_verify(
-                response_xslt=SAMPLE_FORUM_SENTRY_XSLT,
+                response_xslt=SAMPLE_GATEWAY_XSLT,
                 data_mapping_sheet=drifted_dm,
                 error_taxonomy_sheet={"ERR_01": "Invalid Group Number"},
                 gateway_policy=policy,
@@ -949,7 +949,7 @@ def run_cli_demo() -> None:
     }
 
     contract = engine.synthesize_and_verify(
-        response_xslt=SAMPLE_FORUM_SENTRY_XSLT,
+        response_xslt=SAMPLE_GATEWAY_XSLT,
         data_mapping_sheet=data_mapping,
         error_taxonomy_sheet={"ERR_400": "Malformed Request", "ERR_500": "MQ Timeout"},
         gateway_policy=policy,

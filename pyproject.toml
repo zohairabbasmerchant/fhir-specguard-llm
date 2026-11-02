@@ -19,7 +19,7 @@ keywords = [
   "xslt-ast",
   "openapi-3-1",
   "hipaa-safe-harbor",
-  "forum-sentry",
+  "xslt-api-gateway",
   "api-gateway"
 ]
 classifiers = [
