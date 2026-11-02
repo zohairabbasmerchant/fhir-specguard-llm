@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fhir-specguard-llm"
+version = "0.2.0"
+description = "Compiler-gated XSLT AST contract extractor, 7-factor complexity estimator, OpenAPI 3.1 synthesizer, CMS-0057-F FHIR IG validator, and HIPAA Safe Harbor sanitizer"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [
+  {name = "Zohair Abbas Merchant", email = "zohair_atif@hotmail.com"}
+]
+keywords = [
+  "healthcare-interoperability",
+  "hl7-fhir",
+  "cms-0057-f",
+  "xslt-ast",
+  "openapi-3-1",
+  "hipaa-safe-harbor",
+  "forum-sentry",
+  "api-gateway"
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Healthcare Industry",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Medical Science Apps.",
+  "Topic :: Software Development ::Code Generators",
+  "Topic :: Software Development :: Documentation"
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/zohairabbasmerchant/fhir-specguard-llm"
+Repository = "https://github.com/zohairabbasmerchant/fhir-specguard-llm"
+Issues = "https://github.com/zohairabbasmerchant/fhir-specguard-llm/issues"
+ORCID = "https://orcid.org/0009-0003-9013-4407"
+
+[tool.setuptools]
+py-modules = [
+  "specguard_xslt_auditor",
+  "specguard_workbook_cli",
+  "specguard_cms0057_validator"
+]
