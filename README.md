@@ -10,7 +10,7 @@
 
 `fhir-specguard-llm` is a clean-room, vendor-agnostic Python toolkit implementing the compiler-gated specification governance pipeline presented in *SpecGuard-LLM: Automated Specification Governance and HIPAA-Compliant Documentation Synthesis for Large-Scale Healthcare API Cloud Migrations*.
 
-Designed for enterprise healthcare engineering teams migrating legacy ESB integrations to cloud-native architectures and **Forum Sentry API Gateways**, the toolkit parses hardware-accelerated [W3C XSLT transformation stylesheets](https://www.w3.org/TR/xslt-30/) and multi-tab requirement workbooks into verified, zero-drift [OpenAPI 3.1.0](https://spec.openapis.org/oas/v3.1.0.html) contracts.
+Designed for enterprise healthcare engineering teams migrating legacy ESB integrations to cloud-native architectures and **XSLT based API Gateways**, the toolkit parses hardware-accelerated [W3C XSLT transformation stylesheets](https://www.w3.org/TR/xslt-30/) and multi-tab requirement workbooks into verified, zero-drift [OpenAPI 3.1.0](https://spec.openapis.org/oas/v3.1.0.html) contracts.
 
 ## Core Modules & Capabilities
 
